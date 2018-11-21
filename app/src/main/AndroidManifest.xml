@@ -22,6 +22,14 @@
         <activity
             android:name=".actividades.OptionsActivity"
             android:label="@string/title_activity_options"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".actividades.CreacionActivity"
+            android:label="@string/title_activity_creacion"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".actividades.EliminarReserva"
+            android:label="@string/title_activity_eliminar_reserva"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
