@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.reservas.wheelu.wheelu.entidades.Aleatorio;
 import com.reservas.wheelu.wheelu.R;
 import com.reservas.wheelu.wheelu.ReservaService;
+import com.reservas.wheelu.wheelu.entidades.Usuario;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Call<Aleatorio> aleatorioCall = service.iniciarSesion(correo.getText().toString().trim(), password.getText().toString().trim());
-
                 aleatorioCall.enqueue(new Callback<Aleatorio>() {
                     @Override
                     public void onResponse(Call<Aleatorio> call, Response<Aleatorio> response) {
