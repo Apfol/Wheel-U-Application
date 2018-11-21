@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Wheel U</string>
+    <string name="title_activity_options">OptionsActivity</string>
 </resources>

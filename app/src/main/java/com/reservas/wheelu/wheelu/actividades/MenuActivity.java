@@ -2,6 +2,7 @@ package com.reservas.wheelu.wheelu.actividades;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.reservas.wheelu.wheelu.R;
@@ -20,10 +21,14 @@ public class MenuActivity extends AppCompatActivity {
 
     Retrofit retrofit;
     ReservaService service;
+    TextView titulo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu);
+
+        titulo = findViewById(R.id.textView);
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(LoginActivity.BASE_URL)
@@ -39,6 +44,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Pasajero> call, Response<Pasajero> response) {
                 Pasajero pasajero = response.body();
+                //titulo.setText("Welcome: " + pasajero.getNombre());
             }
 
             @Override
@@ -47,7 +53,6 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        
 
     }
 }
