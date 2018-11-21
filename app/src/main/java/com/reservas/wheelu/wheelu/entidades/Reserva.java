@@ -1,4 +1,4 @@
-package com.reservas.wheelu.wheelu;
+package com.reservas.wheelu.wheelu.entidades;
 
 public class Reserva {
     private String nombreReserva;
