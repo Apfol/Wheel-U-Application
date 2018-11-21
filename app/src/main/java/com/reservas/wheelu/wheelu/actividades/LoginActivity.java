@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.reservas.wheelu.wheelu.entidades.Aleatorio;
 import com.reservas.wheelu.wheelu.R;
-import com.reservas.wheelu.wheelu.ReservaService;
+import com.reservas.wheelu.wheelu.servicios.ReservaServices;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     public static String BASE_URL = "https://wheel-u-reservas.appspot.com/_ah/api/reservas/v1/";
     public static String ALEATORIO_USUARIO_LOGEADO = "aleatorio";
     Retrofit retrofit;
-    ReservaService service;
+    ReservaServices service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        service = retrofit.create(ReservaService.class);
+        service = retrofit.create(ReservaServices.class);
         Button iniciarSesion = findViewById(R.id.buttonIniciarSesion);
         final EditText correo = findViewById(R.id.editTextCorreo);
         final EditText password = findViewById(R.id.editTextPassword);

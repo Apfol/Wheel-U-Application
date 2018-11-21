@@ -1,4 +1,4 @@
-package com.reservas.wheelu.wheelu;
+package com.reservas.wheelu.wheelu.servicios;
 
 import com.reservas.wheelu.wheelu.entidades.Aleatorio;
 import com.reservas.wheelu.wheelu.entidades.Pasajero;
@@ -9,18 +9,20 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
-public interface ReservaService {
-
+public interface ReservaServices {
 
     @GET("login/{correo}/{password}")
     Call<Aleatorio> iniciarSesion(@Path("correo") String correo, @Path("password") String password);
 
     @POST("obtenerUsuario/{correo}")
-    Call<Usuario> obtenerUsuario(@Path("correo") String correo, @Body Aleatorio aleatorio);
-
-    @POST("obtenerUsuario/{correo}")
     Call<Pasajero> usuario(@Path("correo") String correo, @Body Aleatorio aleatorio);
+
+    @PUT("modificarReserva/{nombreReserva}/{nuevoNombre}/{nuevoIDRuta}/{correoPasajero}")
+    Call<Reserva> modificarReserva(@Path("nombreReserva") String nombreReserva, @Path("nuevoNombre") String nuevoNombre,
+                                   @Path("nuevoIDRuta") String nuevoIDRUTA, @Path("correoPasajero") String correoPasajero,
+                                   @Body Aleatorio aleatorio);
 
 }

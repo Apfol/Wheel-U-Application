@@ -9,13 +9,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.reservas.wheelu.wheelu.R;
-import com.reservas.wheelu.wheelu.ReservaService;
 import com.reservas.wheelu.wheelu.actividades.CRUDReservas.CrearActivity;
 import com.reservas.wheelu.wheelu.actividades.CRUDReservas.EliminarActivity;
 import com.reservas.wheelu.wheelu.actividades.CRUDReservas.ModificarActivity;
 import com.reservas.wheelu.wheelu.actividades.CRUDReservas.VerActivity;
 import com.reservas.wheelu.wheelu.entidades.Aleatorio;
 import com.reservas.wheelu.wheelu.entidades.Pasajero;
+import com.reservas.wheelu.wheelu.servicios.ReservaServices;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,7 +28,7 @@ public class MenuActivity extends AppCompatActivity {
     public static String USUARIO_KEY = "usuario";
 
     Retrofit retrofit;
-    ReservaService service;
+    ReservaServices service;
     TextView titulo;
     Pasajero pasajero = new Pasajero();
     Button btnModificarReserva, btnVerReservas, btnCrearReserva, btnEliminarReserva;
@@ -51,7 +51,7 @@ public class MenuActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        service = retrofit.create(ReservaService.class);
+        service = retrofit.create(ReservaServices.class);
         pasajero = obtenerPasajero(service, aleatorioObjectUsuarioLogeado);
 
         btnModificarReserva.setOnClickListener(new View.OnClickListener() {
@@ -63,11 +63,11 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btnVerReservas.setOnClickListener(new View.OnClickListener() {
+        /*btnVerReservas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), VerActivity.class);
-                intent.putExtra(USUARIO_KEY, pasajero);
+                intent.putExtra(USUARIO_KEY, pasajeroObtenido);
                 intent.putExtra(LoginActivity.ALEATORIO_USUARIO_LOGEADO, aleatorioObjectUsuarioLogeado);
                 startActivity(intent);
             }
@@ -76,7 +76,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CrearActivity.class);
-                intent.putExtra(USUARIO_KEY, pasajero);
+                intent.putExtra(USUARIO_KEY, pasajeroObtenido);
                 intent.putExtra(LoginActivity.ALEATORIO_USUARIO_LOGEADO, aleatorioObjectUsuarioLogeado);
                 startActivity(intent);
             }
@@ -85,25 +85,23 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), EliminarActivity.class);
-                intent.putExtra(USUARIO_KEY, pasajero);
+                intent.putExtra(USUARIO_KEY, pasajeroObtenido);
                 intent.putExtra(LoginActivity.ALEATORIO_USUARIO_LOGEADO, aleatorioObjectUsuarioLogeado);
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
 
     //Se obtiene pasajero desde endpoint
-    public Pasajero obtenerPasajero(ReservaService service, Aleatorio aleatorioObjectUsuarioLogeado) {
+    public Pasajero obtenerPasajero(ReservaServices service, Aleatorio aleatorioObjectUsuarioLogeado) {
         Call<Pasajero> usuarioCall = service.usuario(aleatorioObjectUsuarioLogeado.getCorreo(), aleatorioObjectUsuarioLogeado);
-
         usuarioCall.enqueue(new Callback<Pasajero>() {
             @Override
             public void onResponse(Call<Pasajero> call, Response<Pasajero> response) {
                 pasajero = response.body();
                 titulo.setText("Welcome: " + pasajero.getNombre());
             }
-
             @Override
             public void onFailure(Call<Pasajero> call, Throwable t) {
                 Toast.makeText(MenuActivity.this, "¡Falló!", Toast.LENGTH_LONG).show();

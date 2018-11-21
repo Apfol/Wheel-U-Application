@@ -2,35 +2,22 @@ package com.reservas.wheelu.wheelu.entidades;
 
 import java.util.ArrayList;
 
-public class Conductor extends Usuario{
+public class Conductor{
 
-    public Conductor(String nombre, String correo, String contrasena, String documento) {
-        super(nombre, correo, contrasena, documento);
-    }
+    private String nombre;
+    private String correo;
+    private String contrasena;
+    private String documento;
+    private static ArrayList<Usuario> usuarios = new ArrayList<>();
 
     public Conductor() {
-
     }
 
-    @Override
-    public void consultar() {
-        String datosUsuarios = "";
-        ArrayList<Usuario> usuarios = this.getUsuarios();
-        for (Usuario us: usuarios) {
-            if(us instanceof Conductor) {
-                datosUsuarios += us.getNombre() + " " + us.getCorreo() + "\n";
-            }
-        }
-    }
-
-    @Override
-    public void eliminar(String correo) {
-        ArrayList<Usuario> usuarios = this.getUsuarios();
-        for (Usuario us: usuarios) {
-            if(us.getCorreo().equals(correo)) {
-                usuarios.remove(us);
-            }
-        }
+    public Conductor(String nombre, String correo, String contrasena, String documento) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.contrasena= contrasena;
+        this.documento = documento;
     }
 
 }

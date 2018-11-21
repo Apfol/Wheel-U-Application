@@ -31,5 +31,4 @@ public class Aleatorio implements Serializable {
     public void setAleatorio(String aleatorio) {
         this.aleatorio = aleatorio;
     }
-
 }
