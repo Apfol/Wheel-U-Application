@@ -19,6 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".actividades.MenuActivity" />
+        <activity android:name=".actividades.CRUDReservas.ModificarActivity" />
+        <activity android:name=".actividades.CRUDReservas.VerActivity" />
+        <activity android:name=".actividades.CRUDReservas.CrearActivity" />
+        <activity android:name=".actividades.CRUDReservas.EliminarActivity"></activity>
     </application>
 
 </manifest>
