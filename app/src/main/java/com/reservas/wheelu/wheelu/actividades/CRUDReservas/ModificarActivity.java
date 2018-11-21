@@ -18,6 +18,6 @@ public class ModificarActivity extends AppCompatActivity {
 
         Pasajero usuarioLogeado = (Pasajero) getIntent().getExtras().getSerializable(MenuActivity.USUARIO_KEY);
 
-        
+
     }
 }

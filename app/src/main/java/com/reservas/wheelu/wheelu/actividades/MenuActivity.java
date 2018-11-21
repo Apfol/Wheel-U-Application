@@ -38,6 +38,8 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        final Aleatorio aleatorioObjectUsuarioLogeado = (Aleatorio) getIntent().getExtras().getSerializable(LoginActivity.ALEATORIO_USUARIO_LOGEADO);
+
         titulo = findViewById(R.id.textView);
         btnModificarReserva = findViewById(R.id.btnModificarReserva);
         btnVerReservas = findViewById(R.id.btnVerReserva);
@@ -50,13 +52,14 @@ public class MenuActivity extends AppCompatActivity {
                 .build();
 
         service = retrofit.create(ReservaService.class);
-        pasajero = obtenerPasajero(service);
+        pasajero = obtenerPasajero(service, aleatorioObjectUsuarioLogeado);
 
         btnModificarReserva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ModificarActivity.class);
                 intent.putExtra(USUARIO_KEY, pasajero);
+                intent.putExtra(LoginActivity.ALEATORIO_USUARIO_LOGEADO, aleatorioObjectUsuarioLogeado);
                 startActivity(intent);
             }
         });
@@ -65,6 +68,7 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), VerActivity.class);
                 intent.putExtra(USUARIO_KEY, pasajero);
+                intent.putExtra(LoginActivity.ALEATORIO_USUARIO_LOGEADO, aleatorioObjectUsuarioLogeado);
                 startActivity(intent);
             }
         });
@@ -73,6 +77,7 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CrearActivity.class);
                 intent.putExtra(USUARIO_KEY, pasajero);
+                intent.putExtra(LoginActivity.ALEATORIO_USUARIO_LOGEADO, aleatorioObjectUsuarioLogeado);
                 startActivity(intent);
             }
         });
@@ -81,6 +86,7 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), EliminarActivity.class);
                 intent.putExtra(USUARIO_KEY, pasajero);
+                intent.putExtra(LoginActivity.ALEATORIO_USUARIO_LOGEADO, aleatorioObjectUsuarioLogeado);
                 startActivity(intent);
             }
         });
@@ -88,8 +94,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     //Se obtiene pasajero desde endpoint
-    public Pasajero obtenerPasajero(ReservaService service) {
-        Aleatorio aleatorioObjectUsuarioLogeado = (Aleatorio) getIntent().getExtras().getSerializable(LoginActivity.USUARIO_LOGEADO_KEY);
+    public Pasajero obtenerPasajero(ReservaService service, Aleatorio aleatorioObjectUsuarioLogeado) {
         Call<Pasajero> usuarioCall = service.usuario(aleatorioObjectUsuarioLogeado.getCorreo(), aleatorioObjectUsuarioLogeado);
 
         usuarioCall.enqueue(new Callback<Pasajero>() {
