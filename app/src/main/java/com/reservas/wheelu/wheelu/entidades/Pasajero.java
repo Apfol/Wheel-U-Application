@@ -1,8 +1,9 @@
 package com.reservas.wheelu.wheelu.entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pasajero extends Usuario{
+public class Pasajero extends Usuario implements Serializable {
 
     public Pasajero(String nombre, String correo, String contrasena, String documento) {
         super(nombre, correo, contrasena, documento);

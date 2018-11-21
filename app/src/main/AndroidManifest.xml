@@ -31,6 +31,10 @@
             android:name=".actividades.EliminarReserva"
             android:label="@string/title_activity_eliminar_reserva"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".actividades.CRUDReservas.ModificarActivity" />
+        <activity android:name=".actividades.CRUDReservas.VerActivity" />
+        <activity android:name=".actividades.CRUDReservas.CrearActivity" />
+        <activity android:name=".actividades.CRUDReservas.EliminarActivity"></activity>
     </application>
 
 </manifest>

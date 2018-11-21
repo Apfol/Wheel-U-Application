@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.reservas.wheelu.wheelu.entidades.Aleatorio;
 import com.reservas.wheelu.wheelu.R;
 import com.reservas.wheelu.wheelu.ReservaService;
-import com.reservas.wheelu.wheelu.entidades.Usuario;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoginActivity extends AppCompatActivity {
 
     public static String BASE_URL = "https://wheel-u-reservas.appspot.com/_ah/api/reservas/v1/";
-    public static String USUARIO_LOGEADO_KEY = "correo";
+    public static String ALEATORIO_USUARIO_LOGEADO = "aleatorio";
     Retrofit retrofit;
     ReservaService service;
 
@@ -53,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                         Aleatorio aleatorio = response.body();
                         if(aleatorio != null) {
                             Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                            intent.putExtra(USUARIO_LOGEADO_KEY, aleatorio);
+                            intent.putExtra(ALEATORIO_USUARIO_LOGEADO, aleatorio);
                             startActivity(intent);
                         }  else {
                             Toast.makeText(LoginActivity.this, "Usuario no registrado, intentalo de nuevo",Toast.LENGTH_LONG).show();
