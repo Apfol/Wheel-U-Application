@@ -2,10 +2,10 @@ package com.reservas.wheelu.wheelu;
 
 public class Reserva {
     private String nombreReserva;
-    private int IDRutaReservada;
+    private String IDRutaReservada;
     private String documentoPasajero;
 
-    public Reserva(String nombreReserva, int IDRutaReservada, String documentoPasajero) {
+    public Reserva(String nombreReserva, String IDRutaReservada, String documentoPasajero) {
         this.nombreReserva = nombreReserva;
         this.IDRutaReservada = IDRutaReservada;
         this.documentoPasajero = documentoPasajero;
@@ -19,11 +19,11 @@ public class Reserva {
         this.nombreReserva = nombreReserva;
     }
 
-    public int getIDRutaReservada() {
+    public String getIDRutaReservada() {
         return IDRutaReservada;
     }
 
-    public void setIDRutaReservada(int IDRutaReservada) {
+    public void setIDRutaReservada(String IDRutaReservada) {
         this.IDRutaReservada = IDRutaReservada;
     }
 
