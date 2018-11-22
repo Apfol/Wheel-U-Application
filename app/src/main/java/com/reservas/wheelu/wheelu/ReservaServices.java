@@ -1,9 +1,12 @@
 package com.reservas.wheelu.wheelu;
 
 import com.reservas.wheelu.wheelu.entidades.Aleatorio;
+import com.reservas.wheelu.wheelu.entidades.ListaReservas;
 import com.reservas.wheelu.wheelu.entidades.Pasajero;
 import com.reservas.wheelu.wheelu.entidades.Reserva;
 import com.reservas.wheelu.wheelu.entidades.Usuario;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -26,7 +29,6 @@ public interface ReservaServices {
                                    @Path("nuevoIDRuta") String nuevoIDRUTA, @Path("correoPasajero") String correoPasajero,
                                    @Body Aleatorio aleatorio);
 
-
     @DELETE("eliminarReserva/{IdRuta}")
     Call<Reserva> eliminarReserva(@Path("IdRuta") String idRuta, @Body Aleatorio aleatorio);
 
@@ -35,4 +37,5 @@ public interface ReservaServices {
                                    @Path("IDRutaReservada") String IDRUTA, @Path("correoPasajero") String correoPasajero,
                                    @Body Aleatorio aleatorio);
 
+    @POST("consultarReservas/{correo}")
 }
