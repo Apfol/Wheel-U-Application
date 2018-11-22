@@ -29,6 +29,8 @@ import static org.junit.Assert.*;
  */
 public class reservasTest {
 
+    Reserva reservaModificada;
+
     @Test
     public void actualizar_reserva() {
         Retrofit retrofit;
@@ -41,18 +43,19 @@ public class reservasTest {
         service = retrofit.create(ReservaServices.class);
 
         //final Pasajero usuarioLogeado = new Pasajero("Jario lopez", "jairolo@unisabana.edu.co", "jairo123", "1073525507");
-        final Aleatorio aleatorio = new Aleatorio("jairolo@unisabana.edu.co", "54");
+        final Aleatorio aleatorio = new Aleatorio("jairolo@unisabana.edu.co", "2778286363762");
 
         final Reserva reservaInicial = new Reserva("Reserva1", "2", "jairolo@unisabana.edu.co");
         final Reserva reservaEsperada = new Reserva("ReservaModificada", "3", "jairolo@unisabana.edu.co");
 
+        assertEquals(reservaEsperada.getNombreReserva(), reservaInicial.getNombreReserva());
 
         Call<Reserva> usuarioCall = service.modificarReserva("Reserva1", "ReservaModificada", "3", "jairolo@unisabana.edu.co", aleatorio);
 
         usuarioCall.enqueue(new Callback<Reserva>() {
             @Override
             public void onResponse(Call<Reserva> call, Response<Reserva> response) {
-                Reserva reservaModificada = response.body();
+                reservaModificada = response.body();
                 assertEquals(reservaEsperada.getNombreReserva(), reservaModificada.getNombreReserva());
             }
 
@@ -61,7 +64,5 @@ public class reservasTest {
 
             }
         });
-
-
     }
 }
