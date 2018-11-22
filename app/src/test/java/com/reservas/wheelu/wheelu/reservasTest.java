@@ -11,6 +11,7 @@ import com.reservas.wheelu.wheelu.entidades.Aleatorio;
 import com.reservas.wheelu.wheelu.entidades.Pasajero;
 import com.reservas.wheelu.wheelu.entidades.Reserva;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -66,4 +67,72 @@ public class reservasTest {
     @Test void  consultarreservas() {
 
     }
+    @Test
+    public void crearReserva(){
+        Retrofit retrofit;
+        ReservaServices service;
+        retrofit = new Retrofit.Builder()
+                .baseUrl(LoginActivity.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        service = retrofit.create(ReservaServices.class);
+
+        final Aleatorio aleatorio = new Aleatorio("anaga@unisabana.edu.co", "18499046336826");
+
+        final Reserva reservaInicial = new Reserva("Reserva ana", "anaa", "anaga@unisabana.edu.co");
+
+        Call<Reserva> creacionCall = service.crearReserva(reservaInicial.getNombreReserva(), reservaInicial.getIDRutaReservada(),reservaInicial.getCorreoPasajero(), aleatorio);
+
+
+        creacionCall.enqueue(new Callback<Reserva>() {
+            @Override
+            public void onResponse(Call<Reserva> call, Response<Reserva> response) {
+                if(response != null){
+                    assertEquals(response.body().getNombreReserva(), reservaInicial.getNombreReserva());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Reserva> call, Throwable t) {
+            }
+        });
+
+
+    }
+
+
+    @Test
+    public void eliminarReserva(){
+        Retrofit retrofit;
+        ReservaServices service;
+        retrofit = new Retrofit.Builder()
+                .baseUrl(LoginActivity.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        service = retrofit.create(ReservaServices.class);
+
+        final Aleatorio aleatorio = new Aleatorio("anaga@unisabana.edu.co", "18499046336826");
+
+        final Reserva reservaInicial = new Reserva("Reserva ana", "anaa", "anaga@unisabana.edu.co");
+
+        Call<Reserva> eliminacionCall = service.eliminarReserva(reservaInicial.getIDRutaReservada(), aleatorio);
+
+
+        eliminacionCall.enqueue(new Callback<Reserva>() {
+            @Override
+            public void onResponse(Call<Reserva> call, Response<Reserva> response) {
+                if(response != null){
+                    assertEquals(response.body().getNombreReserva(), reservaInicial.getNombreReserva());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Reserva> call, Throwable t) {
+            }
+        });
+    }
+
+
 }
