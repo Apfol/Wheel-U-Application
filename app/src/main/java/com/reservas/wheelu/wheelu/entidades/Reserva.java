@@ -9,6 +9,7 @@ public class Reserva implements Serializable {
     private String nombreReserva;
     @SerializedName("idrutaReservada")
     private String IDRutaReservada;
+    @SerializedName("documentoPasajero")
     private String correoPasajero;
 
     public Reserva(String nombreReserva, String IDRutaReservada, String correoPasajero) {
