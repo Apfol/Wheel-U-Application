@@ -27,10 +27,10 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class actualizarReservaTest {
+public class reservasTest {
 
     @Test
-    public void actualizar_Reserva() {
+    public void actualizar_reserva() {
         Retrofit retrofit;
         ReservaServices service;
         retrofit = new Retrofit.Builder()
@@ -53,7 +53,7 @@ public class actualizarReservaTest {
             @Override
             public void onResponse(Call<Reserva> call, Response<Reserva> response) {
                 Reserva reservaModificada = response.body();
-                 assertEquals(reservaEsperada, reservaModificada);
+                assertEquals(reservaEsperada.getNombreReserva(), reservaModificada.getNombreReserva());
             }
 
             @Override
