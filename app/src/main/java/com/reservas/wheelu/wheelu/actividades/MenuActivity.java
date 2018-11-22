@@ -9,6 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.reservas.wheelu.wheelu.R;
+import com.reservas.wheelu.wheelu.actividades.CRUDReservas.CrearActivity;
+import com.reservas.wheelu.wheelu.actividades.CRUDReservas.EliminarActivity;
+import com.reservas.wheelu.wheelu.actividades.CRUDReservas.VerActivity;
 import com.reservas.wheelu.wheelu.actividades.CRUDReservas.modificar.ModificarActivity;
 import com.reservas.wheelu.wheelu.entidades.Aleatorio;
 import com.reservas.wheelu.wheelu.entidades.Pasajero;
@@ -60,11 +63,11 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        /*btnVerReservas.setOnClickListener(new View.OnClickListener() {
+        btnVerReservas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), VerActivity.class);
-                intent.putExtra(USUARIO_KEY, pasajeroObtenido);
+                intent.putExtra(USUARIO_KEY, pasajero);
                 intent.putExtra(LoginActivity.ALEATORIO_USUARIO_LOGEADO, aleatorioObjectUsuarioLogeado);
                 startActivity(intent);
             }
@@ -73,7 +76,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CrearActivity.class);
-                intent.putExtra(USUARIO_KEY, pasajeroObtenido);
+                intent.putExtra(USUARIO_KEY, pasajero);
                 intent.putExtra(LoginActivity.ALEATORIO_USUARIO_LOGEADO, aleatorioObjectUsuarioLogeado);
                 startActivity(intent);
             }
@@ -82,11 +85,11 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), EliminarActivity.class);
-                intent.putExtra(USUARIO_KEY, pasajeroObtenido);
+                intent.putExtra(USUARIO_KEY, pasajero);
                 intent.putExtra(LoginActivity.ALEATORIO_USUARIO_LOGEADO, aleatorioObjectUsuarioLogeado);
                 startActivity(intent);
             }
-        });*/
+        });
 
     }
 
