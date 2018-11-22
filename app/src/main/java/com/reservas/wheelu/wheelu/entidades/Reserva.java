@@ -1,14 +1,21 @@
 package com.reservas.wheelu.wheelu.entidades;
 
-public class Reserva {
-    private String nombreReserva;
-    private String IDRutaReservada;
-    private String documentoPasajero;
+import com.google.gson.annotations.SerializedName;
 
-    public Reserva(String nombreReserva, String IDRutaReservada, String documentoPasajero) {
+import java.io.Serializable;
+
+public class Reserva implements Serializable {
+
+    private String nombreReserva;
+    @SerializedName("idrutaReservada")
+    private String IDRutaReservada;
+    @SerializedName("documentoPasajero")
+    private String correoPasajero;
+
+    public Reserva(String nombreReserva, String IDRutaReservada, String correoPasajero) {
         this.nombreReserva = nombreReserva;
         this.IDRutaReservada = IDRutaReservada;
-        this.documentoPasajero = documentoPasajero;
+        this.correoPasajero = correoPasajero;
     }
 
     public String getNombreReserva() {
@@ -27,11 +34,11 @@ public class Reserva {
         this.IDRutaReservada = IDRutaReservada;
     }
 
-    public String getDocumentoPasajero() {
-        return documentoPasajero;
+    public String getCorreoPasajero() {
+        return correoPasajero;
     }
 
-    public void setDocumentoPasajero(String documentoPasajero) {
-        this.documentoPasajero = documentoPasajero;
+    public void setCorreoPasajero(String correoPasajero) {
+        this.correoPasajero = correoPasajero;
     }
 }

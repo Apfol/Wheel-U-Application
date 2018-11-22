@@ -9,13 +9,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.reservas.wheelu.wheelu.R;
-import com.reservas.wheelu.wheelu.actividades.CRUDReservas.CrearActivity;
-import com.reservas.wheelu.wheelu.actividades.CRUDReservas.EliminarActivity;
-import com.reservas.wheelu.wheelu.actividades.CRUDReservas.ModificarActivity;
-import com.reservas.wheelu.wheelu.actividades.CRUDReservas.VerActivity;
+import com.reservas.wheelu.wheelu.actividades.CRUDReservas.modificar.ModificarActivity;
 import com.reservas.wheelu.wheelu.entidades.Aleatorio;
 import com.reservas.wheelu.wheelu.entidades.Pasajero;
-import com.reservas.wheelu.wheelu.servicios.ReservaServices;
+import com.reservas.wheelu.wheelu.ReservaServices;
 
 import retrofit2.Call;
 import retrofit2.Callback;
