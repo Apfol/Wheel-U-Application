@@ -5,5 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".actividades.CRUDReservas.EliminarActivity">
+    <!--
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    -->
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="100dp"
+        android:layout_height="39dp"
+        android:text="Id reserva"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="22dp" />
 
+    <Button
+        android:id="@+id/btnEliminarReserva"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eliminar"
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="130dp" />
+
+    <EditText
+        android:id="@+id/editTextIdRutaR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="16dp" />
 </android.support.constraint.ConstraintLayout>

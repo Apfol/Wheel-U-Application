@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".actividades.CRUDReservas.CreacionActivity"
-    tools:showIn="@layout/activity_creacion">
+    tools:context=".actividades.CRUDReservas.MostrarReserva"
+    tools:showIn="@layout/activity_mostrar_reserva">
 
 </android.support.constraint.ConstraintLayout>

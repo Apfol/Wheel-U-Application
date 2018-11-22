@@ -24,18 +24,17 @@
             android:label="@string/title_activity_options"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".actividades.CreacionActivity"
-            android:label="@string/title_activity_creacion"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".actividades.EliminarReserva"
+            android:name=".actividades.CRUDReservas.EliminarActivity"
             android:label="@string/title_activity_eliminar_reserva"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".actividades.CRUDReservas.modificar.ModificarActivity" />
         <activity android:name=".actividades.CRUDReservas.VerActivity" />
         <activity android:name=".actividades.CRUDReservas.CrearActivity" />
-        <activity android:name=".actividades.CRUDReservas.EliminarActivity" />
-        <activity android:name=".actividades.CRUDReservas.modificar.ModificarRealizadoActivity"></activity>
+        <activity android:name=".actividades.CRUDReservas.modificar.ModificarRealizadoActivity" />
+        <activity
+            android:name=".actividades.CRUDReservas.MostrarReserva"
+            android:label="@string/title_activity_mostrar_reserva"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

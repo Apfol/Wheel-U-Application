@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".actividades.CRUDReservas.modificar.ModificarRealizadoActivity">
+    tools:context=".actividades.CRUDReservas.MostrarReserva"
+    android:id="@+id/coordinatorLayout">
+
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tituloMostrarReserva"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -34,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tituloMostrarReserva" />
 
     <TextView
-        android:id="@+id/textViewNombre"
+        android:id="@+id/textViewNombreM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -58,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/textViewIDRuta"
+        android:id="@+id/textViewIdRutaM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -85,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
-        android:id="@+id/textViewCorreo"
+        android:id="@+id/textViewCorreoM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
