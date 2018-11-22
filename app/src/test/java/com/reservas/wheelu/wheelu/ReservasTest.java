@@ -33,7 +33,7 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class reservasTest {
+public class ReservasTest {
 
     Reserva reservaModificada;
 
@@ -48,9 +48,7 @@ public class reservasTest {
 
         service = retrofit.create(ReservaServices.class);
 
-        final Aleatorio aleatorio = new Aleatorio("jairolo@unisabana.edu.co", "2778286363762");
-
-        final Reserva reservaInicial = new Reserva("Reserva1", "2", "jairolo@unisabana.edu.co");
+        final Aleatorio aleatorio = new Aleatorio("anaga@unisabana.edu.co", "18499046336826");
         final Reserva reservaEsperada = new Reserva("ReservaModificada", "3", "jairolo@unisabana.edu.co");
 
         Call<Reserva> usuarioCall = service.modificarReserva("Reserva1", "ReservaModificada", "3", "jairolo@unisabana.edu.co", aleatorio);
@@ -80,20 +78,19 @@ public class reservasTest {
 
         service = retrofit.create(ReservaServices.class);
 
-        final Aleatorio aleatorio = new Aleatorio("jairolo@unisabana.edu.co", "2778286363762");
+        final Aleatorio aleatorio = new Aleatorio("anaga@unisabana.edu.co", "18499046336826");
 
-        Call<ListaReservas> usuarioCall = service.obtenerReservas("jairolo@unisabana.edu.co", aleatorio);
+        Call<ListaReservas> usuarioCall = service.obtenerReservas("anaga@unisabana.edu.co", aleatorio);
 
         final List<Reserva> reservasEsperadas = new ArrayList<>();
-        reservasEsperadas.add(new Reserva("Reserva1", "2", "jairolo@unisabana.edu.co"));
-        reservasEsperadas.add(new Reserva("Reserva2", "1", "jairolo@unisabana.edu.co"));
         reservasEsperadas.add(new Reserva("Reserva3", "4", "anaga@unisabana.edu.co"));
         reservasEsperadas.add(new Reserva("Reserva4", "7", "anaga@unisabana.edu.co"));
 
         usuarioCall.enqueue(new Callback<ListaReservas>() {
             @Override
             public void onResponse(Call<ListaReservas> call, Response<ListaReservas> response) {
-                assertArrayEquals(reservasEsperadas.toArray(), response.body().getReservas().toArray());
+                List<Reserva> reservasObtenidas = response.body().getReservas();
+                assertArrayEquals(reservasEsperadas.toArray(), reservasObtenidas.toArray());
             }
 
             @Override

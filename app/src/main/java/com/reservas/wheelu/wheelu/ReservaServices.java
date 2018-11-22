@@ -41,4 +41,7 @@ public interface ReservaServices {
 
     @POST("consultarReservas/{correo}")
     Call<ListaReservas> obtenerReservas(@Path("correo") String correo, @Body Aleatorio aleatorio);
+
+    @GET("reservas")
+    Call<ListaReservas> obtenerTodasReservas();
 }
