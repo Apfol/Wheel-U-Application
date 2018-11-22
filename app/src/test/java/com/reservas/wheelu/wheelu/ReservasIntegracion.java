@@ -56,7 +56,6 @@ public class ReservasIntegracion {
 
             }
         });
-
     }
 
     @Test
@@ -91,13 +90,11 @@ public class ReservasIntegracion {
                 }
                 assertArrayEquals(reservasEsperadas.toArray(), reservasRuta.toArray());
             }
-
             @Override
             public void onFailure(Call<ListaReservas> call, Throwable t) {
 
             }
         });
-
     }
 
     @Test

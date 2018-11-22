@@ -38,6 +38,31 @@ public class ReservasTest {
     Reserva reservaModificada;
 
     @Test
+    public void iniciar_sesion() {
+        Retrofit retrofit;
+        final ReservaServices service;
+        retrofit = new Retrofit.Builder()
+                .baseUrl(LoginActivity.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        service = retrofit.create(ReservaServices.class);
+
+        final Pasajero pasajero = new Pasajero("Ana Garcia", "anaga@unisabana.edu.co", "ana123", "1234567889");
+        Call<Aleatorio> aleatorioCall = service.iniciarSesion(pasajero.getCorreo(), pasajero.getContrasena());
+        aleatorioCall.enqueue(new Callback<Aleatorio>() {
+            @Override
+            public void onResponse(Call<Aleatorio> call, Response<Aleatorio> response) {
+                String aleatorio = response.body().getAleatorio();
+                assertTrue(aleatorio != null && Integer.parseInt(aleatorio) != 0);
+            }
+            @Override
+            public void onFailure(Call<Aleatorio> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @Test
     public void actualizar_reserva() {
         Retrofit retrofit;
         ReservaServices service;
@@ -45,14 +70,11 @@ public class ReservasTest {
                 .baseUrl(LoginActivity.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
         service = retrofit.create(ReservaServices.class);
 
         final Aleatorio aleatorio = new Aleatorio("anaga@unisabana.edu.co", "18499046336826");
         final Reserva reservaEsperada = new Reserva("ReservaModificada", "3", "jairolo@unisabana.edu.co");
-
         Call<Reserva> usuarioCall = service.modificarReserva("Reserva1", "ReservaModificada", "3", "jairolo@unisabana.edu.co", aleatorio);
-
         usuarioCall.enqueue(new Callback<Reserva>() {
             @Override
             public void onResponse(Call<Reserva> call, Response<Reserva> response) {
@@ -75,24 +97,19 @@ public class ReservasTest {
                 .baseUrl(LoginActivity.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
         service = retrofit.create(ReservaServices.class);
 
         final Aleatorio aleatorio = new Aleatorio("anaga@unisabana.edu.co", "18499046336826");
-
         Call<ListaReservas> usuarioCall = service.obtenerReservas("anaga@unisabana.edu.co", aleatorio);
-
         final List<Reserva> reservasEsperadas = new ArrayList<>();
         reservasEsperadas.add(new Reserva("Reserva3", "4", "anaga@unisabana.edu.co"));
         reservasEsperadas.add(new Reserva("Reserva4", "7", "anaga@unisabana.edu.co"));
-
         usuarioCall.enqueue(new Callback<ListaReservas>() {
             @Override
             public void onResponse(Call<ListaReservas> call, Response<ListaReservas> response) {
                 List<Reserva> reservasObtenidas = response.body().getReservas();
                 assertArrayEquals(reservasEsperadas.toArray(), reservasObtenidas.toArray());
             }
-
             @Override
             public void onFailure(Call<ListaReservas> call, Throwable t) {
 
@@ -111,12 +128,8 @@ public class ReservasTest {
         service = retrofit.create(ReservaServices.class);
 
         final Aleatorio aleatorio = new Aleatorio("anaga@unisabana.edu.co", "18499046336826");
-
         final Reserva reservaInicial = new Reserva("Reserva ana", "anaa", "anaga@unisabana.edu.co");
-
         Call<Reserva> creacionCall = service.crearReserva(reservaInicial.getNombreReserva(), reservaInicial.getIDRutaReservada(),reservaInicial.getCorreoPasajero(), aleatorio);
-
-
         creacionCall.enqueue(new Callback<Reserva>() {
             @Override
             public void onResponse(Call<Reserva> call, Response<Reserva> response) {
@@ -129,8 +142,6 @@ public class ReservasTest {
             public void onFailure(Call<Reserva> call, Throwable t) {
             }
         });
-
-
     }
 
 
@@ -142,16 +153,11 @@ public class ReservasTest {
                 .baseUrl(LoginActivity.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
         service = retrofit.create(ReservaServices.class);
 
         final Aleatorio aleatorio = new Aleatorio("anaga@unisabana.edu.co", "18499046336826");
-
         final Reserva reservaInicial = new Reserva("Reserva ana", "anaa", "anaga@unisabana.edu.co");
-
         Call<Reserva> eliminacionCall = service.eliminarReserva(reservaInicial.getIDRutaReservada(), aleatorio);
-
-
         eliminacionCall.enqueue(new Callback<Reserva>() {
             @Override
             public void onResponse(Call<Reserva> call, Response<Reserva> response) {
@@ -159,7 +165,6 @@ public class ReservasTest {
                     assertEquals(response.body().getNombreReserva(), reservaInicial.getNombreReserva());
                 }
             }
-
             @Override
             public void onFailure(Call<Reserva> call, Throwable t) {
             }
