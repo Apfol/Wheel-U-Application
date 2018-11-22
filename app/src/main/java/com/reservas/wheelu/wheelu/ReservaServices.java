@@ -1,4 +1,4 @@
-package com.reservas.wheelu.wheelu.servicios;
+package com.reservas.wheelu.wheelu;
 
 import com.reservas.wheelu.wheelu.entidades.Aleatorio;
 import com.reservas.wheelu.wheelu.entidades.Pasajero;

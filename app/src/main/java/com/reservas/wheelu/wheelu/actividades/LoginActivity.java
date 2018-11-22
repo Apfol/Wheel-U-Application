@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.reservas.wheelu.wheelu.entidades.Aleatorio;
 import com.reservas.wheelu.wheelu.R;
-import com.reservas.wheelu.wheelu.servicios.ReservaServices;
+import com.reservas.wheelu.wheelu.ReservaServices;
 
 import retrofit2.Call;
 import retrofit2.Callback;
