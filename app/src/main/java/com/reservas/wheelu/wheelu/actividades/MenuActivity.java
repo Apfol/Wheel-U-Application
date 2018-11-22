@@ -26,6 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MenuActivity extends AppCompatActivity {
 
     public static String USUARIO_KEY = "usuario";
+    public static String TITULO_KEY = "titulo";
 
     Retrofit retrofit;
     ReservaServices service;

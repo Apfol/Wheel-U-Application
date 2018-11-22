@@ -74,19 +74,21 @@ public class EliminarActivity extends AppCompatActivity {
     }
 
 
-    private void eliminarReserva(ReservaServices service,String id, Aleatorio aleatorio){
-        Call<Reserva> resElCall = service.eliminarReserva(id, aleatorio);
+    private void eliminarReserva(ReservaServices service, String idRuta, final Aleatorio aleatorio){
+        Call<Reserva> resElCall = service.eliminarReserva(idRuta, aleatorio);
 
         resElCall.enqueue(new Callback<Reserva>() {
             @Override
             public void onResponse(Call<Reserva> call, Response<Reserva> response) {
-                Reserva resEliminada = response.body();
-                if(resEliminada != null)
+
+                if(response.isSuccessful())
                 {
-                    Intent intent = new Intent(getApplicationContext(), MostrarReserva.class);
-                    intent.putExtra(ModificarActivity.RESERVA_KEY, resEliminada);
-                    startActivity(intent);
+                    Toast.makeText(EliminarActivity.this, "¡Reserva eliminada!", Toast.LENGTH_LONG).show();
                 }
+                Toast.makeText(EliminarActivity.this, "¡Reserva eliminada!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(EliminarActivity.this, MenuActivity.class);
+                intent.putExtra(LoginActivity.ALEATORIO_USUARIO_LOGEADO, aleatorio);
+                startActivity(intent);
             }
 
             @Override

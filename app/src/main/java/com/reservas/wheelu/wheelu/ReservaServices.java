@@ -12,6 +12,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -29,7 +30,8 @@ public interface ReservaServices {
                                    @Path("nuevoIDRuta") String nuevoIDRUTA, @Path("correoPasajero") String correoPasajero,
                                    @Body Aleatorio aleatorio);
 
-    @DELETE("eliminarReserva/{IdRuta}")
+    //@DELETE("eliminarReserva/{IdRuta}")
+    @HTTP(method = "DELETE", path = "eliminarReserva/{IdRuta}", hasBody = true)
     Call<Reserva> eliminarReserva(@Path("IdRuta") String idRuta, @Body Aleatorio aleatorio);
 
     @POST("crearReserva/{nombreReserva}/{IDRutaReservada}/{correoPasajero}")

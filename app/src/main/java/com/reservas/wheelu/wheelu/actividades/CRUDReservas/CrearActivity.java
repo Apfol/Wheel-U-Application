@@ -74,6 +74,7 @@ public class CrearActivity extends AppCompatActivity {
                 if(reservaModificada != null) {
                     Intent intent = new Intent(getApplicationContext(), MostrarReserva.class);
                     intent.putExtra(ModificarActivity.RESERVA_KEY, reservaModificada);
+                    intent.putExtra(MenuActivity.TITULO_KEY, "Reserva creada");
                     startActivity(intent);
                 }
             }
