@@ -38,7 +38,7 @@ public class VerActivity extends AppCompatActivity {
         final Pasajero usuarioLogeado = (Pasajero) getIntent().getExtras().getSerializable(MenuActivity.USUARIO_KEY);
         final Aleatorio aleatorio = (Aleatorio) getIntent().getExtras().getSerializable(LoginActivity.ALEATORIO_USUARIO_LOGEADO);
 
-        reyclerViewUser = (RecyclerView) findViewById(R.id.recyclerView);
+        reyclerViewUser = findViewById(R.id.recyclerView);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
